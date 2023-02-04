@@ -1,4 +1,4 @@
-module Chap01 (intMax, intMin, lengthReallyBigInteger, sampleDouble) where
+module Chap01 (intMax, intMin, lengthReallyBigInteger, sampleDouble, valueTrue, valueFalse) where
 
 -- |
 -- intMax
@@ -22,3 +22,9 @@ lengthReallyBigInteger n = length(show (reallyBigInteger n))
 
 sampleDouble :: Double
 sampleDouble = 4.5387e-4
+
+valueTrue :: Bool
+valueTrue = True
+
+valueFalse :: Bool
+valueFalse = False

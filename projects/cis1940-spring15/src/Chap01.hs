@@ -1,4 +1,4 @@
-module Chap01 (intMax, intMin, lengthReallyBigInteger) where
+module Chap01 (intMax, intMin, lengthReallyBigInteger, sampleDouble) where
 
 -- |
 -- intMax
@@ -19,3 +19,6 @@ reallyBigInteger n = n ^ ( n ^ ( n ^ ( n ^ n ) ) )
 
 lengthReallyBigInteger :: Integer -> Int
 lengthReallyBigInteger n = length(show (reallyBigInteger n))
+
+sampleDouble :: Double
+sampleDouble = 4.5387e-4

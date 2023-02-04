@@ -1,7 +1,7 @@
 module Chap01Spec (spec) where
 
 import Test.Hspec
-import Chap01 (intMax, intMin, lengthReallyBigInteger)
+import Chap01 (intMax, intMin, lengthReallyBigInteger, sampleDouble)
 
 spec :: Spec
 spec = do
@@ -13,3 +13,8 @@ spec = do
     describe "Chap01 Integer" $ do
         it "Integer is limited only by the amount of memory on your machine." $
             lengthReallyBigInteger 2 `shouldBe` 19729
+    describe "Chap01 Double" $ do
+        it "decimal notation" $
+            sampleDouble `shouldBe` 0.00045387
+        it "exponential notation" $
+            sampleDouble `shouldBe` 4.5387e-4

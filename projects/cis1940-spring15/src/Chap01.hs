@@ -2,7 +2,8 @@ module Chap01 (
         intMax, intMin,
         lengthReallyBigInteger,
         sampleDouble,
-        valueTrue, valueFalse
+        valueTrue, valueFalse,
+        valueChar
     ) where
 
 -- |
@@ -33,3 +34,6 @@ valueTrue = True
 
 valueFalse :: Bool
 valueFalse = False
+
+valueChar :: Char -> Char
+valueChar c = c

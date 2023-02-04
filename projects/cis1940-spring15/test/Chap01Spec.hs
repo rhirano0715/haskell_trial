@@ -5,7 +5,8 @@ import Chap01 (
         intMax, intMin,
         lengthReallyBigInteger,
         sampleDouble,
-        valueTrue, valueFalse
+        valueTrue, valueFalse,
+        valueChar
     )
 
 spec :: Spec
@@ -28,3 +29,10 @@ spec = do
             valueTrue `shouldBe` True
         it "False" $
             valueFalse `shouldBe` False
+    describe "Chap01 Char" $ do
+        it "unicode character x" $
+            valueChar 'x' `shouldBe` 'x'
+        it "unicode character Ａ" $
+            valueChar 'Ａ' `shouldBe` 'Ａ'
+        it "unicode character あ" $
+            valueChar 'あ' `shouldBe` 'あ'

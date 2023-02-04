@@ -8,3 +8,5 @@ RUN apt-get update && \
 
 RUN cabal clean && \
     cabal update
+
+RUN cabal install doctest

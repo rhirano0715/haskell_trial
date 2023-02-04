@@ -1,8 +1,11 @@
 module Main where
 
-import qualified MyLib (someFunc)
+import qualified Chap01 (intMax)
 
+-- |
+-- main
+-- >>> main
+-- 9223372036854775807
 main :: IO ()
 main = do
-  putStrLn "Hello, Haskell!"
-  MyLib.someFunc
+  print Chap01.intMax

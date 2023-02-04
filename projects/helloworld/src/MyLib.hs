@@ -1,10 +1,6 @@
-module MyLib (someFunc) where
+module MyLib (factorial) where
 
--- |
--- someFunc :: IO ()
---
--- >>> someFunc 3
--- 6
-someFunc :: Int -> Int
-someFunc 0 = 1
-someFunc n = n * someFunc(n - 1)
+
+factorial :: Int -> Int
+factorial 0 = 1
+factorial n = n * factorial (n - 1)

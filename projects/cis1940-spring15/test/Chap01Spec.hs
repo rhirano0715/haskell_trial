@@ -1,7 +1,7 @@
 module Chap01Spec (spec) where
 
 import Test.Hspec
-import Chap01 (intMax, intMin)
+import Chap01 (intMax, intMin, lengthReallyBigInteger)
 
 spec :: Spec
 spec = do
@@ -10,3 +10,6 @@ spec = do
             intMax `shouldBe` 9223372036854775807
         it "intMin is min value of int" $
             intMin `shouldBe` -9223372036854775808
+    describe "Chap01 Integer" $ do
+        it "Integer is limited only by the amount of memory on your machine." $
+            lengthReallyBigInteger 2 `shouldBe` 19729

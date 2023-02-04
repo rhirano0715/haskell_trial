@@ -1,4 +1,4 @@
-module Chap01 (intMax, intMin) where
+module Chap01 (intMax, intMin, lengthReallyBigInteger) where
 
 -- |
 -- intMax
@@ -13,3 +13,9 @@ intMax = maxBound
 -- -9223372036854775808
 intMin :: Int
 intMin = minBound
+
+reallyBigInteger :: Integer -> Integer
+reallyBigInteger n = n ^ ( n ^ ( n ^ ( n ^ n ) ) )
+
+lengthReallyBigInteger :: Integer -> Int
+lengthReallyBigInteger n = length(show (reallyBigInteger n))

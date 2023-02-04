@@ -1,4 +1,9 @@
-module Chap01 (intMax, intMin, lengthReallyBigInteger, sampleDouble, valueTrue, valueFalse) where
+module Chap01 (
+        intMax, intMin,
+        lengthReallyBigInteger,
+        sampleDouble,
+        valueTrue, valueFalse
+    ) where
 
 -- |
 -- intMax

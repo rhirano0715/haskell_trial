@@ -1,7 +1,12 @@
 module Chap01Spec (spec) where
 
 import Test.Hspec
-import Chap01 (intMax, intMin, lengthReallyBigInteger, sampleDouble, valueTrue, valueFalse)
+import Chap01 (
+        intMax, intMin,
+        lengthReallyBigInteger,
+        sampleDouble,
+        valueTrue, valueFalse
+    )
 
 spec :: Spec
 spec = do

@@ -28,7 +28,8 @@
 				"vscode-icons-team.vscode-icons",
 				"eamodio.gitlens",
 				"GitHub.vscode-pull-request-github",
-				"haskell.haskell"
+				"haskell.haskell",
+				"ms-vscode.vscode-selfhost-test-provider"
 			]
 		}
 	}

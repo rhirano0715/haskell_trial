@@ -122,3 +122,46 @@ spec = do
                 1 >= 1 `shouldBe` True
             it "1 >= 2 is False" $ 
                 1 >= 2 `shouldBe` False
+    describe "Defining basic functions" $ do
+        describe "sumtorial  compute the sum of the integers from 1 to n. using matching" $ do
+            it "sumtorial 0 = 0" $
+                sumtorial 0 `shouldBe` 0
+            it "sumtorial 3 = 6" $
+                sumtorial 3 `shouldBe` 6
+        describe "hailstone . using guards" $ do
+            it "hailstone 0 = 0" $
+                hailstone 0 `shouldBe` 0
+            it "hailstone 2 = 1" $
+                hailstone 2 `shouldBe` 1
+            it "hailstone 1 = 4" $
+                hailstone 1 `shouldBe` 4
+        describe "foo . using matching and guards" $ do
+            it "foo 0" $
+                foo 0 `shouldBe` 16
+            it "foo 1" $
+                foo 1 `shouldBe` 3
+            it "foo -3" $
+                foo (-3) `shouldBe` 0
+            it "foo 36" $
+                foo 36 `shouldBe` -43
+            it "foo 38" $
+                foo 38 `shouldBe` 41
+
+sumtorial :: Integer -> Integer
+sumtorial 0 = 0
+sumtorial n = n + sumtorial (n-1)
+
+hailstone :: Integer -> Integer
+hailstone n
+  | n `mod` 2 == 0 = n `div` 2
+  | otherwise      = 3*n + 1
+
+foo :: Integer -> Integer
+foo 0 = 16
+foo 1 
+  | "Haskell" > "C++" = 3
+  | otherwise         = 4
+foo n
+  | n < 0            = 0
+  | n `mod` 17 == 2  = -43
+  | otherwise        = n + 3

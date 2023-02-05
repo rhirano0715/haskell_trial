@@ -54,8 +54,10 @@ spec = do
             it "3 x 2 = 6" $
                 3 * 2 `shouldBe` 6
         describe "Division" $ do
-            it "3 ÷ 2 = 1.5" $
+            it "3 / 2 = 1.5. '/' is performs floating-point division only. " $
                 3 / 2 `shouldBe` 1.5
+            it "3 `div` 2 = 1. `div` is integer division. " $
+                3 `div` 2 `shouldBe` 1
         describe "Modulus" $ do
             it "mod 3 2 = 1" $
                 mod 3 2 `shouldBe` 1
@@ -66,3 +68,57 @@ spec = do
                 3 ^ 2 `shouldBe` 9
             it "3 ^ 3 = 27" $
                 3 ^ 3 `shouldBe` 27
+    describe "Boolean logic" $ do
+        describe "AND" $ do
+            it "True && False is False" $
+                (True && False) `shouldBe` False
+            it "False && True is False" $
+                (False && True) `shouldBe` False
+        describe "OR" $ do
+            it "True || False is True" $
+                (True || False) `shouldBe` True
+            it "False || True is True" $
+                (False || True) `shouldBe` True
+        describe "NOT" $ do
+            it "not True is False" $
+                not True `shouldBe` False
+            it "not True is True" $
+                not False `shouldBe` True
+        describe "==" $ do
+            it "'a' == 'b' is True" $ 
+                'a' == 'b' `shouldBe` False
+            it "'a' == 'b' is False" $ 
+                'a' == 'b' `shouldBe` False
+        describe "/=" $ do
+            it "1 /= 1 is False" $ 
+                1 /= 1 `shouldBe` False
+            it "1 /= 2 is True" $ 
+                1 /= 2 `shouldBe` True
+        describe "<" $ do
+            it "1 < 0 is False" $ 
+                1 < 0 `shouldBe` False
+            it "1 < 1 is False" $ 
+                1 < 1 `shouldBe` False
+            it "1 < 2 is True" $ 
+                1 < 2 `shouldBe` True
+        describe "<=" $ do
+            it "1 <= 0 is False" $ 
+                1 <= 0 `shouldBe` False
+            it "1 <= 1 is True" $ 
+                1 <= 1 `shouldBe` True
+            it "1 <= 2 is True" $ 
+                1 <= 2 `shouldBe` True
+        describe ">" $ do
+            it "1 > 0 is True" $ 
+                1 > 0 `shouldBe` True
+            it "1 > 1 is False" $ 
+                1 > 1 `shouldBe` False
+            it "1 > 2 is False" $ 
+                1 > 2 `shouldBe` False
+        describe ">=" $ do
+            it "1 >= 0 is True" $ 
+                1 >= 0 `shouldBe` True
+            it "1 >= 1 is True" $ 
+                1 >= 1 `shouldBe` True
+            it "1 >= 2 is False" $ 
+                1 >= 2 `shouldBe` False

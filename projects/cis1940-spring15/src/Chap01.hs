@@ -12,7 +12,8 @@ module Chap01 (
         hello1, hello2, helloSame,
         emptyList ,integerListHasSingleElement,
         integerListHasThreeElement, integerListHasTwoElement,
-        hailstoneSeq, intListLength, sumEveryTwo, hailstoneLen
+        hailstoneSeq, intListLength, sumEveryTwo, hailstoneLen,
+        lastDigit, dropLastDigit
     ) where
 
 -- |
@@ -145,3 +146,10 @@ hailstoneLen n = intListLength (hailstoneSeq n) - 1
 -- 
 --     `++` requires `String` to the left and right. But right is Char
 --     
+
+
+lastDigit :: Integer -> Integer
+lastDigit n = n `mod` 10
+
+dropLastDigit :: Integer -> Integer
+dropLastDigit n = n `div` 10

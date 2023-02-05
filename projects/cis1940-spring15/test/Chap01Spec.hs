@@ -7,7 +7,15 @@ import Chap01 (
         sampleDouble,
         valueTrue, valueFalse,
         valueChar, valueString,
-        add
+        add,
+        sumtorial, hailstone, foo,
+        sumPair,
+        functionMultipleArguments,
+        nums, range, range2,
+        hello1, hello2, helloSame,
+        emptyList ,integerListHasSingleElement,
+        integerListHasThreeElement, integerListHasTwoElement,
+        hailstoneSeq, intListLength, sumEveryTwo, hailstoneLen
     )
 
 spec :: Spec
@@ -146,22 +154,38 @@ spec = do
                 foo 36 `shouldBe` -43
             it "foo 38" $
                 foo 38 `shouldBe` 41
-
-sumtorial :: Integer -> Integer
-sumtorial 0 = 0
-sumtorial n = n + sumtorial (n-1)
-
-hailstone :: Integer -> Integer
-hailstone n
-  | n `mod` 2 == 0 = n `div` 2
-  | otherwise      = 3*n + 1
-
-foo :: Integer -> Integer
-foo 0 = 16
-foo 1 
-  | "Haskell" > "C++" = 3
-  | otherwise         = 4
-foo n
-  | n < 0            = 0
-  | n `mod` 17 == 2  = -43
-  | otherwise        = n + 3
+    describe "Pair" $ do
+        it "wip" $
+            sumPair(1, 2) `shouldBe` 3
+    describe "Using functions, and multiple arguments" $ do
+        it "functionMultipleArguments 1 2 3" $
+            functionMultipleArguments 1 2 3 `shouldBe` 6
+        it "functionMultipleArguments 1 (2 * 3) 3" $
+            functionMultipleArguments 1 (2 * 3) 3 `shouldBe` 10
+    describe "List" $ do
+        it "nums" $
+            nums `shouldBe` [1,2,3,19]
+        it "range" $
+            range `shouldBe` [1..100]
+        it "Isometric sequence of 2, from 2 to 100" $
+            range2 `shouldBe` [2,4..100]
+    describe "List" $ do
+        it "String are just list of Char's" $
+            "hello" `shouldBe` ['h', 'e', 'l', 'l', 'o']
+        it "Empty list" $ 
+            emptyList `shouldBe` []
+        it "Create a list has single element" $
+            integerListHasSingleElement `shouldBe` [1]
+        it "Create a list has two element" $
+            integerListHasTwoElement `shouldBe` [3,1]
+        it "Create a list has three element" $
+            integerListHasThreeElement `shouldBe` [2,3,4]
+        it "Function return list" $
+            hailstoneSeq 17 `shouldBe` [17,52,26,13,40,20,10,5,16,8,4,2,1]
+        it "Function argument is list" $
+            intListLength [3,2,1] `shouldBe` 3
+        it "Function argument is list, return list" $
+            sumEveryTwo [5,4,3,2,1] `shouldBe` [9, 5, 1]
+    describe "Combining functions" $ do
+        it "hailstoneLen returns hailstoneSeq's Length" $
+            hailstoneLen 9 `shouldBe` 19

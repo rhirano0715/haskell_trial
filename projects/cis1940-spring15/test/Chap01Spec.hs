@@ -47,3 +47,22 @@ spec = do
                 add 3 2 `shouldBe` 5
             it "(3 + 2) + 2 = 7" $
                 add (add 3 2) 2 `shouldBe` 7
+        describe "Subtraction" $ do
+            it "3 - 2 = 1" $
+                3 - 2 `shouldBe` 1
+        describe "Multiplication" $ do
+            it "3 x 2 = 6" $
+                3 * 2 `shouldBe` 6
+        describe "Division" $ do
+            it "3 ÷ 2 = 1.5" $
+                3 / 2 `shouldBe` 1.5
+        describe "Modulus" $ do
+            it "mod 3 2 = 1" $
+                mod 3 2 `shouldBe` 1
+            it "3 `mod` 2 = 1" $
+                3 `mod` 2 `shouldBe` 1
+        describe "Power" $ do
+            it "3 ^ 2 = 9" $
+                3 ^ 2 `shouldBe` 9
+            it "3 ^ 3 = 27" $
+                3 ^ 3 `shouldBe` 27

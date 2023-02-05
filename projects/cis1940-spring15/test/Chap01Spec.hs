@@ -17,7 +17,7 @@ import Chap01 (
         integerListHasThreeElement, integerListHasTwoElement,
         hailstoneSeq, intListLength, sumEveryTwo, hailstoneLen,
         lastDigit, dropLastDigit,
-        toRevDigits
+        toRevDigits, doubleEveryOther
     )
 
 spec :: Spec
@@ -226,3 +226,13 @@ spec = do
                     toRevDigits 0 `shouldBe` []
                 it "-1 -> []" $
                     toRevDigits (-1) `shouldBe` []
+        describe "Exercise 3" $ do
+            describe "The function doubleEveryOther double every other number starting with the second one" $ do
+                it " [4, 9, 5, 5] = [4, 18, 5, 10]" $
+                    doubleEveryOther [4, 9, 5, 5] `shouldBe` [4, 18, 5, 10]
+                it " [0, 0] = [0, 0]" $
+                    doubleEveryOther [0, 0] `shouldBe` [0, 0]
+                it " [3] = [3]" $
+                    doubleEveryOther [3] `shouldBe` [3]
+                it " [3, 4] = [3, 4]" $
+                    doubleEveryOther [3, 4] `shouldBe` [3, 8]

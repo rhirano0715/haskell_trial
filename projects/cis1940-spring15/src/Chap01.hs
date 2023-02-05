@@ -14,7 +14,7 @@ module Chap01 (
         integerListHasThreeElement, integerListHasTwoElement,
         hailstoneSeq, intListLength, sumEveryTwo, hailstoneLen,
         lastDigit, dropLastDigit,
-        toRevDigits
+        toRevDigits, doubleEveryOther
     ) where
 
 -- |
@@ -159,3 +159,8 @@ toRevDigits :: Integer -> [Integer]
 toRevDigits n 
   | n <= 0    = []
   | otherwise = lastDigit n : toRevDigits (dropLastDigit n)
+
+doubleEveryOther :: [Integer] -> [Integer]
+doubleEveryOther []         = []  -- Do nothing to the empty list
+doubleEveryOther (x:[])     = [x] -- Do nothing to lists with a single element
+doubleEveryOther (x:(y:zs)) = x : (y * 2) : doubleEveryOther zs

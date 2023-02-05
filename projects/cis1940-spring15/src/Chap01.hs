@@ -13,7 +13,8 @@ module Chap01 (
         emptyList ,integerListHasSingleElement,
         integerListHasThreeElement, integerListHasTwoElement,
         hailstoneSeq, intListLength, sumEveryTwo, hailstoneLen,
-        lastDigit, dropLastDigit
+        lastDigit, dropLastDigit,
+        toRevDigits
     ) where
 
 -- |
@@ -153,3 +154,8 @@ lastDigit n = n `mod` 10
 
 dropLastDigit :: Integer -> Integer
 dropLastDigit n = n `div` 10
+
+toRevDigits :: Integer -> [Integer]
+toRevDigits n 
+  | n <= 0    = []
+  | otherwise = lastDigit n : toRevDigits (dropLastDigit n)

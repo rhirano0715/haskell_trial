@@ -16,7 +16,8 @@ import Chap01 (
         emptyList ,integerListHasSingleElement,
         integerListHasThreeElement, integerListHasTwoElement,
         hailstoneSeq, intListLength, sumEveryTwo, hailstoneLen,
-        lastDigit, dropLastDigit
+        lastDigit, dropLastDigit,
+        toRevDigits
     )
 
 spec :: Spec
@@ -215,3 +216,13 @@ spec = do
                     dropLastDigit 10 `shouldBe` 1
                 it "0 -> 0" $
                     dropLastDigit 0 `shouldBe` 0
+        describe "Exercise 2" $ do
+            describe "toRevDigits convert integer to a list of its digits in reverser order." $ do
+                it "1234 -> [4, 3, 2, 1]" $
+                    toRevDigits 1234 `shouldBe` [4, 3, 2, 1]
+                it "53471 -> [1, 7, 4, 3, 5]" $
+                    toRevDigits 53471 `shouldBe` [1, 7, 4, 3, 5]
+                it "0 -> []" $
+                    toRevDigits 0 `shouldBe` []
+                it "-1 -> []" $
+                    toRevDigits (-1) `shouldBe` []

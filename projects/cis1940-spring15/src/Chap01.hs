@@ -3,7 +3,8 @@ module Chap01 (
         lengthReallyBigInteger,
         sampleDouble,
         valueTrue, valueFalse,
-        valueChar
+        valueChar, valueString,
+        add
     ) where
 
 -- |
@@ -37,3 +38,9 @@ valueFalse = False
 
 valueChar :: Char -> Char
 valueChar c = c
+
+valueString :: String -> String
+valueString s = s
+
+add :: Int -> Int -> Int
+add x y = x + y

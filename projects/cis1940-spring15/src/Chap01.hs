@@ -34,6 +34,11 @@ intMin = minBound
 reallyBigInteger :: Integer -> Integer
 reallyBigInteger n = n ^ ( n ^ ( n ^ ( n ^ n ) ) )
 
+
+-- |
+-- lengthReallyBigInteger
+-- >>> lengthReallyBigInteger 2
+-- 19729
 lengthReallyBigInteger :: Integer -> Int
 lengthReallyBigInteger n = length(show (reallyBigInteger n))
 
@@ -52,6 +57,12 @@ valueChar c = c
 valueString :: String -> String
 valueString s = s
 
+-- |
+-- add
+-- >>> add 2 1
+-- 3
+-- >>> add 123 1
+-- 124
 add :: Int -> Int -> Int
 add x y = x + y
 

@@ -93,6 +93,22 @@ hailstone n
   | n `mod` 2 == 0 = n `div` 2
   | otherwise      = 3*n + 1
 
+-- |
+-- foo
+-- >>> foo 0
+-- 16
+-- >>> foo 1
+-- 3
+-- >>> foo 2
+-- -43
+-- >>> foo 16
+-- 19
+-- >>> foo 17
+-- 20
+-- >>> foo 18
+-- 21
+-- >>> foo 19
+-- -43
 foo :: Integer -> Integer
 foo 0 = 16
 foo 1 

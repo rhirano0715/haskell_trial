@@ -7,15 +7,17 @@ import Chap01 (
         sampleDouble,
         valueTrue, valueFalse,
         valueChar, valueString,
-        add,
+        add, subtraction,multiplication, division,
         sumtorial, hailstone, foo,
         sumPair,
         functionMultipleArguments,
         nums, range, range2,
-        hello1, hello2, helloSame,
+        -- hello1, hello2, helloSame,
         emptyList ,integerListHasSingleElement,
         integerListHasThreeElement, integerListHasTwoElement,
-        hailstoneSeq, intListLength, sumEveryTwo, hailstoneLen,
+        hailstoneSeq,
+        -- intListLength,
+        sumEveryTwo, hailstoneLen,
         lastDigit, dropLastDigit,
         toRevDigits, doubleEveryOther
     )
@@ -60,13 +62,13 @@ spec = do
                     add (add 3 2) 2 `shouldBe` 7
             describe "Subtraction" $ do
                 it "3 - 2 = 1" $
-                    3 - 2 `shouldBe` 1
+                    subtraction 3 2 `shouldBe` 1
             describe "Multiplication" $ do
                 it "3 x 2 = 6" $
-                    3 * 2 `shouldBe` 6
+                    multiplication 3 2 `shouldBe` 6
             describe "Division" $ do
                 it "3 / 2 = 1.5. '/' is performs floating-point division only. " $
-                    3 / 2 `shouldBe` 1.5
+                    division 3 2 `shouldBe` 1.5
                 it "3 `div` 2 = 1. `div` is integer division. " $
                     3 `div` 2 `shouldBe` 1
             describe "Modulus" $ do
@@ -186,7 +188,7 @@ spec = do
             it "Function return list" $
                 hailstoneSeq 17 `shouldBe` [17,52,26,13,40,20,10,5,16,8,4,2,1]
             it "Function argument is list" $
-                intListLength [3,2,1] `shouldBe` 3
+                length ([3,2,1]) `shouldBe` 3
             it "Function argument is list, return list" $
                 sumEveryTwo [5,4,3,2,1] `shouldBe` [9, 5, 1]
         describe "Combining functions" $ do

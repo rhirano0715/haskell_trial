@@ -4,7 +4,7 @@ module Chap01 (
         sampleDouble,
         valueTrue, valueFalse,
         valueChar, valueString,
-        add,
+        add, subtraction, multiplication, division,
         sumtorial, hailstone, foo,
         sumPair,
         functionMultipleArguments,
@@ -12,7 +12,9 @@ module Chap01 (
         hello1, hello2, helloSame,
         emptyList ,integerListHasSingleElement,
         integerListHasThreeElement, integerListHasTwoElement,
-        hailstoneSeq, intListLength, sumEveryTwo, hailstoneLen,
+        hailstoneSeq, 
+        -- intListLength, 
+        sumEveryTwo, hailstoneLen,
         lastDigit, dropLastDigit,
         toRevDigits, doubleEveryOther
     ) where
@@ -65,6 +67,15 @@ valueString s = s
 -- 124
 add :: Int -> Int -> Int
 add x y = x + y
+
+subtraction :: Int -> Int -> Int
+subtraction x y = x - y
+
+multiplication :: Int -> Int -> Int
+multiplication x y = x * y
+
+division :: Double -> Double -> Double
+division x y = x / y
 
 -- |
 -- sumtorial
@@ -136,6 +147,7 @@ hello1 = ['h', 'e', 'l', 'l', 'o']
 hello2 :: String
 hello2 = "hello"
 
+helloSame :: Bool
 helloSame = hello1 == hello2
 
 emptyList :: [Int]
@@ -156,9 +168,10 @@ hailstoneSeq 1 = [1]
 hailstoneSeq n = n : hailstoneSeq (hailstone n)
 
 -- Compute the length of a list of Integers.
-intListLength :: [Integer] -> Integer
-intListLength []     = 0
-intListLength (x:xs) = 1 + intListLength xs
+-- intListLength :: [Integer] -> Integer
+-- -- intListLength []     = 0
+-- -- intListLength (x:xs) = 1 + intListLength xs
+-- intListLength x = length x
 
 sumEveryTwo :: [Integer] -> [Integer]
 sumEveryTwo []         = []     -- Do nothing to the empty list
@@ -167,8 +180,10 @@ sumEveryTwo (x:(y:zs)) = (x + y) : sumEveryTwo zs
 
 -- The number of hailstone steps needed to reach 1 from a starting
 -- number.
-hailstoneLen :: Integer -> Integer
-hailstoneLen n = intListLength (hailstoneSeq n) - 1
+-- hailstoneLen :: Integer -> Integer
+-- hailstoneLen n = intListLength (hailstoneSeq n) - 1
+hailstoneLen :: Integer -> Int
+hailstoneLen n = length (hailstoneSeq n) - 1
 
 -- 
 -- The following code causes a compile error

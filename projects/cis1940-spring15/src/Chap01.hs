@@ -66,6 +66,13 @@ valueString s = s
 add :: Int -> Int -> Int
 add x y = x + y
 
+-- sumtorial
+-- >>> sumtorial 3
+-- 6
+-- >>> sumtorial 2
+-- 3
+-- >>> sumtorial 1
+-- 1
 sumtorial :: Integer -> Integer
 sumtorial 0 = 0
 sumtorial n = n + sumtorial (n-1)

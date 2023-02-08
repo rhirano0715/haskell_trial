@@ -66,6 +66,7 @@ valueString s = s
 add :: Int -> Int -> Int
 add x y = x + y
 
+-- |
 -- sumtorial
 -- >>> sumtorial 3
 -- 6
@@ -77,6 +78,16 @@ sumtorial :: Integer -> Integer
 sumtorial 0 = 0
 sumtorial n = n + sumtorial (n-1)
 
+-- |
+-- hailstone
+-- >>> hailstone 1
+-- 4
+-- >>> hailstone 2
+-- 1
+-- >>> hailstone 3
+-- 10
+-- >>> hailstone 4
+-- 2
 hailstone :: Integer -> Integer
 hailstone n
   | n `mod` 2 == 0 = n `div` 2

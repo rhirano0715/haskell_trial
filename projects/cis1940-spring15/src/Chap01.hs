@@ -9,11 +9,9 @@ module Chap01 (
         sumPair,
         functionMultipleArguments,
         nums, range, range2,
-        hello1, hello2, helloSame,
         emptyList ,integerListHasSingleElement,
         integerListHasThreeElement, integerListHasTwoElement,
         hailstoneSeq, 
-        -- intListLength, 
         sumEveryTwo, hailstoneLen,
         lastDigit, dropLastDigit,
         toRevDigits, doubleEveryOther
@@ -141,15 +139,6 @@ nums   = [1,2,3,19]
 range  = [1..100]
 range2 = [2,4..100]
 
-hello1 :: [Char]
-hello1 = ['h', 'e', 'l', 'l', 'o']
-
-hello2 :: String
-hello2 = "hello"
-
-helloSame :: Bool
-helloSame = hello1 == hello2
-
 emptyList :: [Int]
 emptyList = []
 
@@ -167,21 +156,11 @@ hailstoneSeq :: Integer -> [Integer]
 hailstoneSeq 1 = [1]
 hailstoneSeq n = n : hailstoneSeq (hailstone n)
 
--- Compute the length of a list of Integers.
--- intListLength :: [Integer] -> Integer
--- -- intListLength []     = 0
--- -- intListLength (x:xs) = 1 + intListLength xs
--- intListLength x = length x
-
 sumEveryTwo :: [Integer] -> [Integer]
 sumEveryTwo []         = []     -- Do nothing to the empty list
 sumEveryTwo (x:[])     = [x]    -- Do nothing to lists with a single element
 sumEveryTwo (x:(y:zs)) = (x + y) : sumEveryTwo zs
 
--- The number of hailstone steps needed to reach 1 from a starting
--- number.
--- hailstoneLen :: Integer -> Integer
--- hailstoneLen n = intListLength (hailstoneSeq n) - 1
 hailstoneLen :: Integer -> Int
 hailstoneLen n = length (hailstoneSeq n) - 1
 

@@ -12,11 +12,9 @@ import Chap01 (
         sumPair,
         functionMultipleArguments,
         nums, range, range2,
-        -- hello1, hello2, helloSame,
         emptyList ,integerListHasSingleElement,
         integerListHasThreeElement, integerListHasTwoElement,
         hailstoneSeq,
-        -- intListLength,
         sumEveryTwo, hailstoneLen,
         lastDigit, dropLastDigit,
         toRevDigits, doubleEveryOther
@@ -54,6 +52,8 @@ spec = do
             describe "String" $ do
                 it "string sample" $
                     valueString "Hello world ！！" `shouldBe` "Hello world ！！"
+                it "String is Char list" $
+                    "Hello" `shouldBe` ['H', 'e', 'l', 'l', 'o']
         describe "Arithmetic" $ do
             describe "Add" $ do
                 it "3 + 2 = 5" $

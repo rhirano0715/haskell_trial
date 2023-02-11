@@ -245,6 +245,8 @@ doubleEveryOther (x:(y:zs)) = x : (y * 2) : doubleEveryOther zs
 
 sumDigits :: [Integer] -> Integer
 sumDigits [] = 0
-sumDigits (x:[]) = sum (toRevDigits x)
-sumDigits (x:xs) = sum (toRevDigits x) + sumDigits xs
+sumDigits (x:[]) = sumIntDigits x
+sumDigits (x:xs) = sumIntDigits x + sumDigits xs
 
+sumIntDigits :: Integer -> Integer
+sumIntDigits x = sum (toRevDigits x)

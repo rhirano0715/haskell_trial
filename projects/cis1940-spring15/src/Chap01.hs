@@ -128,9 +128,17 @@ foo n
   | n `mod` 17 == 2  = -43
   | otherwise        = n + 3
 
+-- |
+-- sumPair
+-- >>> sumPair (1, 1)
+-- 2
 sumPair :: (Int,Int) -> Int
 sumPair (x,y) = x + y
 
+-- |
+-- functionMultipleArguments
+-- >>> functionMultipleArguments 1 2 3
+-- 6
 functionMultipleArguments :: Int -> Int -> Int -> Int
 functionMultipleArguments x y z = x + y + z
 

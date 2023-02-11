@@ -19,7 +19,7 @@ import Chap01 (
         hailstoneSeq, lengthIntList,
         sumEveryTwo, hailstoneLen,
         lastDigit, dropLastDigit,
-        toRevDigits, doubleEveryOther, sumDigits
+        toRevDigits, doubleEveryOther, sumDigits, luhn
     )
 
 spec :: Spec
@@ -248,3 +248,9 @@ spec = do
                     sumDigits [18] `shouldBe` 9
                 it "sumDigits [10, 5, 18, 4] = 1 + 0 + 5 + 1 + 8 + 4 = 19" $
                     sumDigits [10, 5, 18, 4] `shouldBe` 19
+        describe "Exercise 5" $ do
+            describe "luhn is a valid credit card number" $ do
+                it "luhn 5594589764218858 = True" $
+                    luhn 5594589764218858 `shouldBe` True
+                it "luhn 1234567898765432 = True" $
+                    luhn 1234567898765432 `shouldBe` False

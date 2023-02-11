@@ -16,7 +16,7 @@ module Chap01 (
         hailstoneSeq, lengthIntList,
         sumEveryTwo, hailstoneLen,
         lastDigit, dropLastDigit,
-        toRevDigits, doubleEveryOther, sumDigits
+        toRevDigits, doubleEveryOther, sumDigits, luhn
     ) where
 
 -- |
@@ -250,3 +250,6 @@ sumDigits (x:xs) = sumIntDigits x + sumDigits xs
 
 sumIntDigits :: Integer -> Integer
 sumIntDigits x = sum (toRevDigits x)
+
+luhn :: Integer -> Bool
+luhn x = sumDigits (doubleEveryOther (toRevDigits x)) `mod` 10 == 0

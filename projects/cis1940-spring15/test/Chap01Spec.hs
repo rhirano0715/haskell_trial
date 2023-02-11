@@ -19,7 +19,8 @@ import Chap01 (
         hailstoneSeq, lengthIntList,
         sumEveryTwo, hailstoneLen,
         lastDigit, dropLastDigit,
-        toRevDigits, doubleEveryOther, sumDigits, luhn
+        toRevDigits, doubleEveryOther, sumDigits, luhn,
+        hanoi
     )
 
 spec :: Spec
@@ -254,3 +255,9 @@ spec = do
                     luhn 5594589764218858 `shouldBe` True
                 it "luhn 1234567898765432 = True" $
                     luhn 1234567898765432 `shouldBe` False
+        describe "Exercise 6" $ do
+            describe "Resolve the Towers of Hanoi" $ do
+                it "Move 2 discs" $
+                    hanoi 2 "a" "b" "c" `shouldBe` [("a", "c"), ("a", "b"), ("c", "b")]
+                it "Move 3 discs" $
+                    hanoi 3 "a" "b" "c" `shouldBe` [("a", "b"), ("a", "c"), ("b", "c"), ("a", "b"), ("c", "a"), ("c", "b"), ("a", "b")]

@@ -16,7 +16,8 @@ module Chap01 (
         hailstoneSeq, lengthIntList,
         sumEveryTwo, hailstoneLen,
         lastDigit, dropLastDigit,
-        toRevDigits, doubleEveryOther, sumDigits, luhn
+        toRevDigits, doubleEveryOther, sumDigits, luhn,
+        hanoi
     ) where
 
 -- |
@@ -253,3 +254,10 @@ sumIntDigits x = sum (toRevDigits x)
 
 luhn :: Integer -> Bool
 luhn x = sumDigits (doubleEveryOther (toRevDigits x)) `mod` 10 == 0
+
+
+type Peg = String
+type Move = (Peg, Peg)
+hanoi :: Integer -> Peg -> Peg -> Peg -> [Move]
+hanoi 0 _ _ _ = []
+hanoi n source dest temp = hanoi (n-1) source temp dest ++ [(source, dest)] ++ hanoi (n-1) temp dest source

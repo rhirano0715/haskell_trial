@@ -16,7 +16,7 @@ module Chap01 (
         hailstoneSeq, lengthIntList,
         sumEveryTwo, hailstoneLen,
         lastDigit, dropLastDigit,
-        toRevDigits, doubleEveryOther
+        toRevDigits, doubleEveryOther, sumDigits
     ) where
 
 -- |
@@ -241,3 +241,10 @@ doubleEveryOther :: [Integer] -> [Integer]
 doubleEveryOther []         = []  -- Do nothing to the empty list
 doubleEveryOther (x:[])     = [x] -- Do nothing to lists with a single element
 doubleEveryOther (x:(y:zs)) = x : (y * 2) : doubleEveryOther zs
+
+
+sumDigits :: [Integer] -> Integer
+sumDigits [] = 0
+sumDigits (x:[]) = sum (toRevDigits x)
+sumDigits (x:xs) = sum (toRevDigits x) + sumDigits xs
+

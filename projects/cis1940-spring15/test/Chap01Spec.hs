@@ -19,7 +19,7 @@ import Chap01 (
         hailstoneSeq, lengthIntList,
         sumEveryTwo, hailstoneLen,
         lastDigit, dropLastDigit,
-        toRevDigits, doubleEveryOther
+        toRevDigits, doubleEveryOther, sumDigits
     )
 
 spec :: Spec
@@ -240,3 +240,11 @@ spec = do
                     doubleEveryOther [3] `shouldBe` [3]
                 it " [3, 4] = [3, 4]" $
                     doubleEveryOther [3, 4] `shouldBe` [3, 8]
+        describe "Exercise 4" $ do
+            describe "The output of doubleEveryOther has a mix of one-digit and two-digit numbers. Define the function" $ do
+                it "sumDigits [1] = 1" $
+                    sumDigits [1] `shouldBe` 1
+                it "sumDigits [18] = 1 + 8 = 9" $
+                    sumDigits [18] `shouldBe` 9
+                it "sumDigits [10, 5, 18, 4] = 1 + 0 + 5 + 1 + 8 + 4 = 19" $
+                    sumDigits [10, 5, 18, 4] `shouldBe` 19

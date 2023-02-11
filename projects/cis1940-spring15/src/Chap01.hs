@@ -4,14 +4,16 @@ module Chap01 (
         sampleDouble,
         valueTrue, valueFalse,
         valueChar, valueString,
-        add, subtraction, multiplication, division,
+        add, subtraction, multiplication, division, intDivision,
+        modulus, powerMultiplier,
+        notEqual, lessThan, lessThanOrEqual, greaterThan, greaterThanOrEqual,
         sumtorial, hailstone, foo,
         sumPair,
         functionMultipleArguments,
         nums, range, range2,
         emptyList ,integerListHasSingleElement,
         integerListHasThreeElement, integerListHasTwoElement,
-        hailstoneSeq, 
+        hailstoneSeq, lengthIntList,
         sumEveryTwo, hailstoneLen,
         lastDigit, dropLastDigit,
         toRevDigits, doubleEveryOther
@@ -74,6 +76,31 @@ multiplication x y = x * y
 
 division :: Double -> Double -> Double
 division x y = x / y
+
+intDivision :: Int -> Int -> Int
+intDivision x y = x `div` y
+
+modulus :: Int -> Int -> Int
+modulus x y = mod x y
+
+powerMultiplier :: Int -> Int -> Int
+powerMultiplier x y = x ^ y
+
+notEqual :: Int -> Int -> Bool
+notEqual x y = x /= y
+
+lessThan :: Int -> Int -> Bool
+lessThan x y = x < y
+
+lessThanOrEqual :: Int -> Int -> Bool
+lessThanOrEqual x y = x <= y
+
+greaterThan :: Int -> Int -> Bool
+greaterThan x y = x > y
+
+greaterThanOrEqual :: Int -> Int -> Bool
+greaterThanOrEqual x y = x >= y
+
 
 -- |
 -- sumtorial
@@ -163,6 +190,9 @@ integerListHasThreeElement = 2 : 3 : 4 : []
 hailstoneSeq :: Integer -> [Integer]
 hailstoneSeq 1 = [1]
 hailstoneSeq n = n : hailstoneSeq (hailstone n)
+
+lengthIntList :: [Integer] -> Int
+lengthIntList x = length x
 
 sumEveryTwo :: [Integer] -> [Integer]
 sumEveryTwo []         = []     -- Do nothing to the empty list

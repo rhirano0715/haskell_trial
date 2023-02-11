@@ -7,14 +7,16 @@ import Chap01 (
         sampleDouble,
         valueTrue, valueFalse,
         valueChar, valueString,
-        add, subtraction,multiplication, division,
+        add, subtraction,multiplication, division, intDivision,
+        modulus, powerMultiplier,
+        notEqual, lessThan, lessThanOrEqual, greaterThan, greaterThanOrEqual,
         sumtorial, hailstone, foo,
         sumPair,
         functionMultipleArguments,
         nums, range, range2,
         emptyList ,integerListHasSingleElement,
         integerListHasThreeElement, integerListHasTwoElement,
-        hailstoneSeq,
+        hailstoneSeq, lengthIntList,
         sumEveryTwo, hailstoneLen,
         lastDigit, dropLastDigit,
         toRevDigits, doubleEveryOther
@@ -70,17 +72,17 @@ spec = do
                 it "3 / 2 = 1.5. '/' is performs floating-point division only. " $
                     division 3 2 `shouldBe` 1.5
                 it "3 `div` 2 = 1. `div` is integer division. " $
-                    3 `div` 2 `shouldBe` 1
+                    intDivision 3 2 `shouldBe` 1
             describe "Modulus" $ do
                 it "mod 3 2 = 1" $
-                    mod 3 2 `shouldBe` 1
-                it "3 `mod` 2 = 1" $
-                    3 `mod` 2 `shouldBe` 1
+                    modulus 3 2 `shouldBe` 1
+                it "3 mod 2 = 1" $
+                    3 `modulus` 2 `shouldBe` 1
             describe "Power" $ do
                 it "3 ^ 2 = 9" $
-                    3 ^ 2 `shouldBe` 9
+                    powerMultiplier 3 2 `shouldBe` 9
                 it "3 ^ 3 = 27" $
-                    3 ^ 3 `shouldBe` 27
+                    powerMultiplier 3 3 `shouldBe` 27
         describe "Boolean logic" $ do
             describe "AND" $ do
                 it "True && False is False" $
@@ -104,37 +106,37 @@ spec = do
                     'a' == 'b' `shouldBe` False
             describe "/=" $ do
                 it "1 /= 1 is False" $ 
-                    1 /= 1 `shouldBe` False
+                    notEqual 1 1 `shouldBe` False
                 it "1 /= 2 is True" $ 
-                    1 /= 2 `shouldBe` True
+                    notEqual 1 2 `shouldBe` True
             describe "<" $ do
                 it "1 < 0 is False" $ 
-                    1 < 0 `shouldBe` False
+                    1 `lessThan` 0 `shouldBe` False
                 it "1 < 1 is False" $ 
-                    1 < 1 `shouldBe` False
+                    1 `lessThan` 1 `shouldBe` False
                 it "1 < 2 is True" $ 
-                    1 < 2 `shouldBe` True
+                    1 `lessThan` 2 `shouldBe` True
             describe "<=" $ do
                 it "1 <= 0 is False" $ 
-                    1 <= 0 `shouldBe` False
+                    1 `lessThanOrEqual` 0 `shouldBe` False
                 it "1 <= 1 is True" $ 
-                    1 <= 1 `shouldBe` True
+                    1 `lessThanOrEqual` 1 `shouldBe` True
                 it "1 <= 2 is True" $ 
-                    1 <= 2 `shouldBe` True
+                    1 `lessThanOrEqual` 2 `shouldBe` True
             describe ">" $ do
                 it "1 > 0 is True" $ 
-                    1 > 0 `shouldBe` True
+                    1 `greaterThan` 0 `shouldBe` True
                 it "1 > 1 is False" $ 
-                    1 > 1 `shouldBe` False
+                    1 `greaterThan` 1 `shouldBe` False
                 it "1 > 2 is False" $ 
-                    1 > 2 `shouldBe` False
+                    1 `greaterThan` 2 `shouldBe` False
             describe ">=" $ do
                 it "1 >= 0 is True" $ 
-                    1 >= 0 `shouldBe` True
+                    1 `greaterThanOrEqual` 0 `shouldBe` True
                 it "1 >= 1 is True" $ 
-                    1 >= 1 `shouldBe` True
+                    1 `greaterThanOrEqual` 1 `shouldBe` True
                 it "1 >= 2 is False" $ 
-                    1 >= 2 `shouldBe` False
+                    1 `greaterThanOrEqual` 2 `shouldBe` False
         describe "Defining basic functions" $ do
             describe "sumtorial  compute the sum of the integers from 1 to n. using matching" $ do
                 it "sumtorial 0 = 0" $
@@ -188,7 +190,7 @@ spec = do
             it "Function return list" $
                 hailstoneSeq 17 `shouldBe` [17,52,26,13,40,20,10,5,16,8,4,2,1]
             it "Function argument is list" $
-                length ([3,2,1]) `shouldBe` 3
+                lengthIntList [1,2,4] `shouldBe` 3
             it "Function argument is list, return list" $
                 sumEveryTwo [5,4,3,2,1] `shouldBe` [9, 5, 1]
         describe "Combining functions" $ do

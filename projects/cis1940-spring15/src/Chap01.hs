@@ -17,7 +17,7 @@ module Chap01 (
         sumEveryTwo, hailstoneLen,
         lastDigit, dropLastDigit,
         toRevDigits, doubleEveryOther, sumDigits, luhn,
-        hanoi
+        hanoi, hanoi4
     ) where
 
 -- |
@@ -261,3 +261,34 @@ type Move = (Peg, Peg)
 hanoi :: Integer -> Peg -> Peg -> Peg -> [Move]
 hanoi 0 _ _ _ = []
 hanoi n source dest temp = hanoi (n-1) source temp dest ++ [(source, dest)] ++ hanoi (n-1) temp dest source
+
+-- hanoi4 :: Integer -> Peg -> Peg -> Peg -> Peg -> [Move]
+-- hanoi4 0 _ _ _ _ = []
+-- hanoi4 n source dest temp1 temp2 = hanoi4 (n-2) source temp2 dest temp1 ++ [(source, temp1), (source, dest), (temp1, dest)] ++ hanoi4 (n-2) temp2 dest source temp1
+
+-- hanoiW :: Integer -> Peg -> Peg -> Peg -> Peg -> [Move]
+-- hanoiW n source dest temp1 temp2
+--   | n <= 0 = []
+--   | n == 1 = [(source, dest)]
+--   | n == 2 = [(source, temp1), (source, dest), (temp1, dest)]
+--   | otherwise = hanoi4 (n-1) source dest temp2 temp1
+
+minimumMoves :: Integer -> Integer
+minimumMoves n = 2^n - 1
+
+split :: Integer -> Integer
+split n = floor ((sqrt (8*fromIntegral n + 1) - 1) / 2)
+
+moveTop :: Integer -> Peg -> Peg -> Peg -> Peg -> [Move]
+moveTop n source dest temp1 temp2
+  | n == 1 = [(source, dest)]
+  | n == 2 = [(source, temp1), (source, dest), (temp1, dest)]
+  | otherwise = moveTop (n-2) source temp2 dest temp1 ++ [(source, dest), (temp2, source), (dest, temp2)] ++ moveTop (n-2) temp1 dest source temp2
+
+hanoi4 :: Integer -> Peg -> Peg -> Peg -> Peg -> [Move]
+hanoi4 n source dest temp1 temp2
+  | n <= 0 = []
+  | n == 1 = [(source, dest)]
+  | n == 2 = [(source, temp1), (source, dest), (temp1, dest)]
+  | otherwise = moveTop k source dest temp2 temp1 ++ hanoi4 (n-k) source temp1 dest temp2 ++ moveTop k temp2 source temp1 dest
+  where k = split n

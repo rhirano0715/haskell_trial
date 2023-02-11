@@ -20,7 +20,7 @@ import Chap01 (
         sumEveryTwo, hailstoneLen,
         lastDigit, dropLastDigit,
         toRevDigits, doubleEveryOther, sumDigits, luhn,
-        hanoi
+        hanoi, hanoi4
     )
 
 spec :: Spec
@@ -261,3 +261,9 @@ spec = do
                     hanoi 2 "a" "b" "c" `shouldBe` [("a", "c"), ("a", "b"), ("c", "b")]
                 it "Move 3 discs" $
                     hanoi 3 "a" "b" "c" `shouldBe` [("a", "b"), ("a", "c"), ("b", "c"), ("a", "b"), ("c", "a"), ("c", "b"), ("a", "b")]
+        describe "Exercise 7" $ do
+            describe "Resolve the Towers of Hanoi4" $ do
+                it "Move 15 discs" $
+                    length (hanoi4 15 "a" "b" "c" "d") `shouldBe` 61
+                it "Move 3 discs" $
+                    hanoi4 3 "a" "b" "c" "d" `shouldBe` [("a", "d"), ("a", "b"), ("d", "b"), ("a", "c"), ("d", "c"), ("d", "a"), ("c", "a")]

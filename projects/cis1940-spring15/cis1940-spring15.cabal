@@ -58,7 +58,7 @@ library
     import:           warnings
 
     -- Modules exported by the library.
-    exposed-modules:  Chap01
+    exposed-modules:  Chap01, Chap02
 
     -- Modules included in this library but not exported.
     -- other-modules:
@@ -136,7 +136,7 @@ test-suite spec
                         , hspec >= 1.3
                         , QuickCheck
                         , cis1940-spring15
-    other-modules:        Chap01Spec
+    other-modules:        Chap01Spec, Chap02Spec
     build-tool-depends:
         , hspec-discover:hspec-discover
 

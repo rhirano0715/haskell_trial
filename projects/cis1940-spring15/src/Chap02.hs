@@ -2,7 +2,8 @@ module Chap02 (
       -- Sample of local variable
       strLength, frob,
       sumTo20,
-      notEmpty
+      notEmpty,
+      doStuff1, doStuff2
     ) where
 
 -- |

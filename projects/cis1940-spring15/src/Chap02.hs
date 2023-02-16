@@ -1,7 +1,8 @@
 module Chap02 (
-      -- Sample of local variable
+      -- Sample of Additional Syntax
       strLength, frob,
       sumTo20,
+      -- Parametric polymorphism
       notEmpty,
       doStuff1, doStuff2
     ) where

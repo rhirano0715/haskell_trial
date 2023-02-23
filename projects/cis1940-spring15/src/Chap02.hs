@@ -1,11 +1,16 @@
-module Chap02 (
-    -- Sample of Additional Syntax
-    strLength, frob,
-    sumTo20,
-    -- Parametric polymorphism
-    notEmpty,
-    doStuff1, doStuff2
-  ) where
+module Chap02 where
+-- module Chap02 (
+--     -- Sample of Additional Syntax
+--     strLength, frob,
+--     sumTo20,
+--     -- Parametric polymorphism
+--     notEmpty,
+--     doStuff1, doStuff2,
+--     -- Exercise 1
+--     exactMatches, colors
+--   ) where
+
+import Data.List
 
 -- |
 -- strLength Sample of local variables using let
@@ -75,3 +80,23 @@ doStuff2 []        = 0
 doStuff2 [_]       = 0
 doStuff2 (x1:x2:_) = x1 + x2
 -- These functions compute exactly the same result, and they are both total. But only the second one is obviously total, and it is much easier to read anyway.
+
+-- A peg can be one of six colors
+data Peg = Red | Green | Blue | Yellow | Orange | Purple
+         deriving (Show, Eq, Ord)
+
+-- A code is defined to simply be a list of Pegs
+type Code = [Peg]
+
+-- A move is constructed using a Code and two integers; the number of
+-- exact matches and the number of regular matches
+data Move = Move Code Int Int
+          deriving (Show, Eq)
+
+-- List containing all of the different Pegs
+colors :: [Peg]
+colors = [Red, Green, Blue, Yellow, Orange, Purple]
+
+
+exactMatches :: Code -> Code -> Int
+exactMatches xs ys = length $ filter(uncurry (==)) $ zip xs ys

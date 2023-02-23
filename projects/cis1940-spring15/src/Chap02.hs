@@ -1,11 +1,11 @@
 module Chap02 (
-      -- Sample of Additional Syntax
-      strLength, frob,
-      sumTo20,
-      -- Parametric polymorphism
-      notEmpty,
-      doStuff1, doStuff2
-    ) where
+    -- Sample of Additional Syntax
+    strLength, frob,
+    sumTo20,
+    -- Parametric polymorphism
+    notEmpty,
+    doStuff1, doStuff2
+  ) where
 
 -- |
 -- strLength Sample of local variables using let

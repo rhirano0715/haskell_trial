@@ -97,6 +97,13 @@ data Move = Move Code Int Int
 colors :: [Peg]
 colors = [Red, Green, Blue, Yellow, Orange, Purple]
 
-
+-- |
+-- exactMatches
+-- >>> exactMatches [Red, Blue, Green, Yellow] [Blue, Green, Yellow, Red]
+-- 0
+-- >>> exactMatches [Red, Blue, Green, Yellow] [Red, Purple, Green, Orange]
+-- 2
+-- >>> exactMatches [Red, Blue, Green, Yellow] [Red, Blue, Green, Yellow]
+-- 4
 exactMatches :: Code -> Code -> Int
 exactMatches xs ys = length $ filter(uncurry (==)) $ zip xs ys

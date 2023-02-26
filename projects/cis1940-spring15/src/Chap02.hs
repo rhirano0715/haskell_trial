@@ -107,3 +107,24 @@ colors = [Red, Green, Blue, Yellow, Orange, Purple]
 -- 4
 exactMatches :: Code -> Code -> Int
 exactMatches xs ys = length $ filter(uncurry (==)) $ zip xs ys
+
+
+-- |
+-- countColors
+-- >>> countColors [Red, Blue, Yellow, Purple]
+-- [1,0,1,1,0,1]
+-- >>> countColors  [Green, Blue, Green, Orange]
+-- [0,2,1,0,1,0]
+countColors :: Code -> [Int]
+countColors code = map count colors
+  where
+    count color = length $ filter (== color) code
+
+-- |
+-- matches
+-- >>> matches [Red, Blue, Yellow, Orange] [Red, Orange, Orange, Blue]
+-- 3
+matches :: Code -> Code -> Int
+matches secret guess = sum $ map (uncurry min) counts
+  where
+    counts = zip (countColors secret) (countColors guess)

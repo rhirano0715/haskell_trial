@@ -23,4 +23,10 @@ spec = do
                     exactMatches [Red, Blue, Green, Yellow] [Red, Purple, Green, Orange] `shouldBe` 2
                 it "exact match." $
                     exactMatches [Red, Blue, Green, Yellow] [Red, Blue, Green, Yellow] `shouldBe` 4
+    describe "works" $ do
+        it "zip" $ do
+            zip [Red, Blue, Green, Yellow] [Blue, Green, Yellow, Red] `shouldBe` [(Red,Blue),(Blue,Green),(Green,Yellow),(Yellow,Red)]
+        it "uncurry" $ do
+            uncurryWork [Red, Blue, Green, Yellow] [Red, Purple, Green, Orange] `shouldBe` []
+
 

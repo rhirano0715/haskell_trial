@@ -128,3 +128,6 @@ matches :: Code -> Code -> Int
 matches secret guess = sum $ map (uncurry min) counts
   where
     counts = zip (countColors secret) (countColors guess)
+
+uncurryWork :: Code -> Code -> [(Peg,Peg)]
+uncurryWork xs ys = filter( uncurry (==) ) $ zip xs ys

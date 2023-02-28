@@ -27,6 +27,6 @@ spec = do
         it "zip" $ do
             zip [Red, Blue, Green, Yellow] [Blue, Green, Yellow, Red] `shouldBe` [(Red,Blue),(Blue,Green),(Green,Yellow),(Yellow,Red)]
         it "uncurry" $ do
-            uncurryWork [Red, Blue, Green, Yellow] [Red, Purple, Green, Orange] `shouldBe` []
+            uncurryWork [Red, Blue, Green, Yellow] [Red, Purple, Green, Orange] `shouldBe` [(Red,Red),(Green,Green)]
 
 

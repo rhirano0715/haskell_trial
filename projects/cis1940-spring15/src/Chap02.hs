@@ -131,3 +131,24 @@ matches secret guess = sum $ map (uncurry min) counts
 
 uncurryWork :: Code -> Code -> [(Peg,Peg)]
 uncurryWork xs ys = filter( uncurry (==) ) $ zip xs ys
+
+-- |
+-- getMove
+-- >>>  getMove [Red, Blue, Yellow, Orange] [Red, Orange, Orange, Blue]
+-- Move [Red,Orange,Orange,Blue] 1 2
+getMove :: Code -> Code -> Move
+getMove secret guess = Move guess exact nonExact
+  where
+    exact = countExactMatches secret guess
+    nonExact = countNonExactMatches secret guess
+
+countExactMatches :: Code -> Code -> Int
+countExactMatches [] [] = 0
+countExactMatches (x:xs) (y:ys)
+  | x == y = 1 + countExactMatches xs ys
+  | otherwise = countExactMatches xs ys
+
+countNonExactMatches :: Code -> Code -> Int
+countNonExactMatches secret guess = length secretMatches - countExactMatches secret guess
+  where
+    secretMatches = filter (`elem` guess) secret

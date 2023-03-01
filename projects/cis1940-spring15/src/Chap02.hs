@@ -152,3 +152,15 @@ countNonExactMatches :: Code -> Code -> Int
 countNonExactMatches secret guess = length secretMatches - countExactMatches secret guess
   where
     secretMatches = filter (`elem` guess) secret
+
+-- | Determines if a given code is consistent with a given move.
+-- >>> isConsistent (Move [Red,Red,Blue,Green] 1 1) [Red,Blue,Yellow,Purple]
+-- True
+-- >>> isConsistent (Move [Red,Red,Blue,Green] 1 1) [Red,Blue,Red,Purple]
+-- False
+isConsistent :: Move -> Code -> Bool
+isConsistent (Move guess exact nonExact) code = 
+    exactMatches == exact && nonExactMatches == nonExact
+  where
+    exactMatches = countExactMatches code guess
+    nonExactMatches = countNonExactMatches code guess

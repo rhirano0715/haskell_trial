@@ -153,7 +153,8 @@ countNonExactMatches secret guess = length secretMatches - countExactMatches sec
   where
     secretMatches = filter (`elem` guess) secret
 
--- | Determines if a given code is consistent with a given move.
+-- |
+-- Determines if a given code is consistent with a given move.
 -- >>> isConsistent (Move [Red,Red,Blue,Green] 1 1) [Red,Blue,Yellow,Purple]
 -- True
 -- >>> isConsistent (Move [Red,Red,Blue,Green] 1 1) [Red,Blue,Red,Purple]
@@ -164,3 +165,24 @@ isConsistent (Move guess exact nonExact) code =
   where
     exactMatches = countExactMatches code guess
     nonExactMatches = countNonExactMatches code guess
+
+-- |
+-- filterCodes
+-- >>> filterCodes (Move [Blue,Red,Green,Yellow] 0 2) [[Red,Blue,Green,Yellow],[Blue,Green,Yellow,Red],[Red,Purple,Green,Orange],[Yellow,Yellow,Green,Blue],[Red,Red,Green,Yellow]]
+-- [[Red,Purple,Green,Orange]]
+-- filterCodes :: Move -> [Code] -> [Code]
+-- filterCodes (Move guess exact nonExact) codes = filter (\code -> isConsistent (Move guess exact nonExact) code) codes
+
+-- -- filterCodes :: Move -> [Code] -> [Code]
+-- -- filterCodes move = filter (isConsistent move)
+-- -- -- filterCodes move codes = filter (isConsistent move) codes
+-- -- -- filterCodes move codes = filter (\c -> isConsistent move c) codes
+
+
+
+
+-- -- |
+-- --
+-- allCodes :: Int -> [Code]
+-- allCodes 0 = [[]]
+-- allCodes n = concatMap (\c -> map (:c) colors) (allCodes (n-1))

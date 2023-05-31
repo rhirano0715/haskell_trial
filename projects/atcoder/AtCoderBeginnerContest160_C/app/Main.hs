@@ -30,8 +30,5 @@ main = do
 minDistance :: Int -> [Int] -> Int
 minDistance k houses = k - maxDist
   where
-    -- Calculate the distances between adjacent houses
-    distances = zipWith (-) (drop 1 houses ++ [head houses + k]) houses
-
-    -- Find the maximum distance
-    maxDist = maximum distances
+    -- Calculate the maximum distance between adjacent houses in one pass
+    maxDist = maximum $ zipWith (-) (drop 1 houses ++ [head houses + k]) houses

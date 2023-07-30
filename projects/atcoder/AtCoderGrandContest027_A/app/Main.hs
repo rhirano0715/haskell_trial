@@ -1,12 +1,19 @@
 -- \|
 -- Module      : Main
--- Description : https://atcoder.jp/contests/agc027/tasks/agc027_a
+-- Description : This module provides a solution to a problem of candy distribution to maximize the number of happy children.
+--               https://atcoder.jp/contests/agc027/tasks/agc027_a
+
 module Main where
 
 import Control.Monad
 import Data.List
 
 -- |
+-- The 'distribute' function calculates the maximum number of children that can be made happy.
+-- Each child wants a certain number of candies and is happy when they get exactly that amount.
+-- The candies are distributed in an order that maximizes the total number of happy children.
+--
+-- Example usage:
 -- >>> distribute 3 70 [10,20,30]
 -- 2
 -- >>> distribute 3 10 [10,20,30]
@@ -24,6 +31,8 @@ distribute n x (a : as)
   where
     isLast = n == 1
 
+-- |
+-- The 'main' function parses input, applies the 'distribute' function and prints the result.
 main :: IO ()
 main = do
   [n, x] <- map read . words <$> getLine

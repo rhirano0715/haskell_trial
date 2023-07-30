@@ -28,5 +28,4 @@ main :: IO ()
 main = do
   [n, x] <- map read . words <$> getLine
   a <- sort . map read . words <$> getLine
-  -- print $ solve x a
   print $ distribute n x a

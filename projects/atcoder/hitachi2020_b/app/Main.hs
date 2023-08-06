@@ -9,9 +9,9 @@ import Control.Monad
 import Data.Array
 import Data.List
 
--- | Calculate the minimum cost to buy one refrigerator and one microwave.
---   The function takes an array of refrigerator prices, an array of microwave prices, and a list of discount tickets.
---   Each ticket is a tuple that contains the indices of the refrigerator and microwave and the discount value.
+-- | 'minimumCost' calculates the minimum cost to buy a fridge and a microwave.
+-- It takes an array of fridge prices, an array of microwave prices, and a list of discount tickets.
+-- Each ticket is a tuple of fridge type, microwave type, and discount amount.
 --
 --   Here are some examples:
 --
@@ -24,19 +24,29 @@ import Data.List
 --   >>> minimumCost (listArray (1, 2) [3, 5]) (listArray (1, 2) [3, 5]) [(2, 2, 2)]
 --   6
 minimumCost :: Array Int Int -> Array Int Int -> [(Int, Int, Int)] -> Int
-minimumCost fridge micro tickets = minimum $ (minFridge + minMicro) : [fridge ! x + micro ! y - c | (x, y, c) <- tickets]
+minimumCost fridgePrices microPrices tickets = minimum allPossibleCosts
   where
-    minFridge = minimum $ elems fridge
-    minMicro = minimum $ elems micro
+    minFridgePrice = minimum $ elems fridgePrices -- Minimum price among all fridges
+    minMicroPrice = minimum $ elems microPrices -- Minimum price among all microwaves
+    costWithoutTicket = minFridgePrice + minMicroPrice -- Cost without using any ticket
+    costWithTicket = [fridgePrices ! fridgeType + microPrices ! microType - discount | (fridgeType, microType, discount) <- tickets] -- Costs using each ticket
+    allPossibleCosts = costWithoutTicket : costWithTicket -- All possible costs, with or without tickets
 
+-- | 'main' function reads the input, applies the 'minimumCost' function, and prints the result.
 main :: IO ()
 main = do
-  [a, b, m] <- map read . words <$> getLine
-  fridgeList <- map read . words <$> getLine
-  microList <- map read . words <$> getLine
-  let fridge = listArray (1, a) fridgeList
-  let micro = listArray (1, b) microList
-  tickets <- replicateM m $ do
-    [x, y, c] <- map read . words <$> getLine
-    return (x, y, c)
-  print $ minimumCost fridge micro tickets
+  -- Read the numbers of fridge types, microwave types, and tickets
+  [numFridgeTypes, numMicroTypes, numTickets] <- map read . words <$> getLine
+  -- Read the price of each fridge type
+  fridgePriceList <- map read . words <$> getLine
+  -- Read the price of each microwave type
+  microPriceList <- map read . words <$> getLine
+  -- Create arrays for the prices
+  let fridgePrices = listArray (1, numFridgeTypes) fridgePriceList
+  let microPrices = listArray (1, numMicroTypes) microPriceList
+  -- Read each ticket
+  tickets <- replicateM numTickets $ do
+    [fridgeType, microType, discount] <- map read . words <$> getLine
+    return (fridgeType, microType, discount)
+  -- Calculate and print the minimum cost
+  print $ minimumCost fridgePrices microPrices tickets

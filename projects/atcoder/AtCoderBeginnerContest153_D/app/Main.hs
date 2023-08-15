@@ -16,7 +16,6 @@ attackCount :: Integer -> Integer
 attackCount 1 = 1
 attackCount h = 2 * attackCount (h `div` 2) + 1
 
--- メイン関数で入力を受け取り、結果を出力
 main :: IO ()
 main = do
   h <- readLn :: IO Integer

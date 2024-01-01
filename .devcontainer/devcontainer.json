@@ -29,7 +29,9 @@
 				"eamodio.gitlens",
 				"GitHub.vscode-pull-request-github",
 				"haskell.haskell",
-				"ms-vscode.vscode-selfhost-test-provider"
+				"ms-vscode.vscode-selfhost-test-provider",
+				"GitHub.copilot",
+				"GitHub.copilot-chat"
 			]
 		}
 	}

@@ -75,6 +75,11 @@ library
     -- Base language which the package is written in.
     default-language: Haskell2010
 
+    ghc-options:         -Wall
+    -- This is the important line for generating documentation
+    -- It tells Cabal to build the Haddock documentation
+    build-type:          Simple
+
 executable helloworld
     -- Import common warning flags.
     import:           warnings

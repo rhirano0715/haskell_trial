@@ -10,7 +10,7 @@ import Data.List (intersect)
 main :: IO ()
 main = do
   -- Read the number of people and the number of types of food
-  [n, _] <- map read . words <$> getLine
+  [n, _] <- map read . words <$> getLine :: IO [Int]
   
   -- Read the list of each person's favorite foods
   favoriteFoodsLists <- replicateM n (map read . tail . words <$> getLine) :: IO [[Int]]

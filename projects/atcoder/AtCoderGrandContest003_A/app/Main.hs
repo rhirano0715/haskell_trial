@@ -5,7 +5,7 @@ module Main where
 
 main :: IO ()
 main = do
-  s <- map read . words <$> getLine :: IO String
+  s <- getLine
   putStrLn $ solve s
 
 -- | solve the problem
@@ -22,10 +22,13 @@ main = do
 -- >>> solve "W"
 -- "No"
 solve :: String -> String
-solve s = result
+solve s
+  | existsNS  && existsEW  = "Yes"
+  | otherwise = "No"
   where
-    existsNouthSouthSet = ('N' `elem` s) == ('S' `elem` s)
-    existsEastWestSet = ('E' `elem` s) == ('W' `elem` s)
-    result = if existsNouthSouthSet && existsEastWestSet
-              then "Yes"
-              else "No"
+    existsNS  = hasPair 'N' 'S' s
+    existsEW  = hasPair 'E' 'W' s
+
+-- | Check if both or neither of the two characters are in the string.
+hasPair :: Char -> Char -> String -> Bool
+hasPair a b s = (a `elem` s) == (b `elem` s)
